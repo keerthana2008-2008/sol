@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Issue Tracker</title>
+
+    <!-- Connect external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container header-content">
+            <div>
+                <h1>🎓 Campus Issue Tracker</h1>
+                <p>Report and track problems around your campus</p>
+            </div>
+
+            <!-- Admin Mode Toggle -->
+            <div class="admin-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="adminToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Admin Mode</span>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- ================= DASHBOARD ================= -->
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <div class="stat-icon total-icon">📋</div>
+                <div>
+                    <span>Total Issues</span>
+                    <h2 id="totalCount">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon pending-icon">⏳</div>
+                <div>
+                    <span>Pending</span>
+                    <h2 id="pendingCount">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon resolved-icon">✓</div>
+                <div>
+                    <span>Resolved</span>
+                    <h2 id="resolvedCount">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= REPORT ISSUE ================= -->
+        <section class="report-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Report an Issue</h2>
+                    <p>Help us improve your campus</p>
+                </div>
+            </div>
+
+            <form id="issueForm">
+
+                <div class="form-grid">
+
+                    <!-- Issue Title -->
+                    <div class="form-group">
+                        <label for="title">Issue Title</label>
+                        <input
+                            type="text"
+                            id="title"
+                            placeholder="Example: Classroom fan not working"
+                            required
+                        >
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="category">Category</label>
+
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Water">Water</option>
+                            <option value="Wi-Fi">Wi-Fi</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label for="location">Location</label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Example: Block A - Room 204"
+                            required
+                        >
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group full-width">
+                        <label for="description">Description</label>
+
+                        <textarea
+                            id="description"
+                            rows="4"
+                            placeholder="Describe the issue..."
+                            required
+                        ></textarea>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    + Report Issue
+                </button>
+
+            </form>
+        </section>
+
+
+        <!-- ================= ISSUES ================= -->
+        <section class="issues-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Campus Issues</h2>
+                    <p id="issueCountText">Showing all issues</p>
+                </div>
+            </div>
+
+
+            <!-- SEARCH AND FILTERS -->
+            <div class="filters">
+
+                <div class="search-box">
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search issues..."
+                    >
+                </div>
+
+                <select id="categoryFilter">
+                    <option value="All">All Categories</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Water">Water</option>
+                    <option value="Wi-Fi">Wi-Fi</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <select id="statusFilter">
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+            </div>
+
+
+            <!-- Issue Cards will be inserted here using JavaScript -->
+            <div id="issuesContainer" class="issues-container"></div>
+
+            <!-- Empty message -->
+            <div id="emptyMessage" class="empty-message">
+                <div>📭</div>
+                <h3>No issues found</h3>
+                <p>Try changing your search or filters.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Campus Issue Tracker • Built with HTML, CSS & JavaScript</p>
+    </footer>
+
+
+    <!-- Connect JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
